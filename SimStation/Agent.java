@@ -2,7 +2,8 @@
  * Edit History:
  * Michael Wong,3/30: Initialized with base classes and variables. Changes to make this generic need to be made.
  * Edited the agent class to implement Serializable.
- *  
+ * Vyvy Tran 4/5: Added a few functions  
+ *
  */
 
 package SimStation;
