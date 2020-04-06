@@ -1,9 +1,9 @@
 /*
- * Edit History:
- * Michael Wong,3/30: Initialized with base classes and variables. Changes to make this generic need to be made.
- * Edited the agent class to implement Serializable.
- *  
- */
+* Edit History:
+* Michael Wong,3/30: Initialized with base classes and variables. Changes to make this generic need to be made.
+* Edited the agent class to implement Serializable.
+*
+*/
 
 package SimStation;
 
@@ -17,7 +17,7 @@ enum AgentState{
 	READY, RUNNING, SUSPENDED, STOPPED;
 }
 
-abstract class Agent implements Runnable,Serializable {
+abstract class Agent implements Runnable, Serializable {
 
 	private String name;
 	private AgentState state;
@@ -30,8 +30,8 @@ abstract class Agent implements Runnable,Serializable {
 		super();
 		this.name = name;
 		state = AgentState.READY;
-	     this.xc = xc;
-	     this.yc = yc;
+		this.xc = xc;
+		this.yc = yc;
 	}
 
 	public synchronized void stop() { state = AgentState.STOPPED; }
@@ -68,4 +68,3 @@ abstract class Agent implements Runnable,Serializable {
 
 	public abstract void update();
 }
-
