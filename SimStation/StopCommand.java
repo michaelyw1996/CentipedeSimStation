@@ -1,3 +1,8 @@
+/**
+* Edit History:
+* Vyvy Tran, 4/13: Initialized stop command
+*/
+
 package simStation;
 import mvc.*;
 
