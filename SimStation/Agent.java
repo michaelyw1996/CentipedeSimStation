@@ -3,7 +3,7 @@
  * Michael Wong,3/30: Initialized with base classes and variables. Changes to make this generic need to be made.
  * Edited the agent class to implement Serializable.
  * Vyvy Tran 4/5: Added a few functions  
- *
+ * Vyvy Tran 4/13: Added start() function
  */
 
 package SimStation;
@@ -57,12 +57,11 @@ abstract class Agent implements Runnable,Serializable {
 	public synchronized boolean isSuspended() { return state == AgentState.SUSPENDED;  }
 	public synchronized boolean finished()
 	{
-		return (state == AgentState.STOPPED); //missing one more statement
+		return (state == AgentState.STOPPED || thread != null); //missing one more statement
 	}
 	public synchronized void resume() {
-		if (!isStopped()) {
-			notify();
-		}
+		state = AgentState.READY;
+		notify();
 	}
 	public String getName() { return name; }
 	public synchronized AgentState getState() { return state; }
@@ -94,6 +93,18 @@ abstract class Agent implements Runnable,Serializable {
 		onExit();
 	}
 
+	public synchronized void start()
+	{
+		onStart();
+		state = AgentState.READY;
+		if (myThread == null)
+		{
+			myThread = new Thread(this, name);
+		}
+		
+		myThread.start();
+	}
+	
 	public abstract void update();
 	protected synchronized void onStart() {}
 	protected synchronized void onExit() {}
