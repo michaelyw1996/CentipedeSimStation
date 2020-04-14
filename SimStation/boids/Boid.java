@@ -1,5 +1,7 @@
-package simStation;
+package boids;
+
 import mvc.*;
+import SimStation.*;
 
 public class Boid extends Agent {
     private int speed;
@@ -18,6 +20,6 @@ public class Boid extends Agent {
       move(speed);
     }
     public synchronized int getSpeed(){
-      return speed; 
+      return speed;
     }
 }
