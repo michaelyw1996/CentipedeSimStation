@@ -37,7 +37,7 @@ class Reciprocate extends CooperateStrategy{
 class RandomlyCheat extends CooperateStrategy{
   public boolean cooperate(){
     return(mvc.Utilities.rng.nextInt(2) == 0);
-  }
+}
 
 class Prisoner extends Agent{
   CooperateStrategy strategy;
@@ -55,33 +55,33 @@ class Prisoner extends Agent{
   }
     
   public synchronized void setLastResponse(boolean lastResponse){
-		this.lastResponse = lastResponse;
-	}
+     this.lastResponse = lastResponse;
+  }
 	
-	public CooperateStrategy getStrategy(){
-		return strategy;
-	}
+  public CooperateStrategy getStrategy(){
+     return strategy;
+  }
 	
-	public synchronized boolean wasCheated(){
-		return lastResponse;
-	}
+  public synchronized boolean wasCheated(){
+     return lastResponse;
+  }
     
    public synchronized void setWasCheated(boolean wasCheated){
-		this.lastResponse = wasCheated;
-	}
+     this.lastResponse = wasCheated;
+  }
 	
-	public void setStrategy(CooperateStrategy strategy){
-		this.strategy = strategy;
-		strategy.setOwner(this);
-	}
+   public void setStrategy(CooperateStrategy strategy){
+     this.strategy = strategy;
+     strategy.setOwner(this);
+   }
 	
-	public int getFitness(){
-		return fitness;
-	}
+   public int getFitness(){
+     return fitness;
+   }
 	
-	public synchronized boolean cooperate(){
-		return strategy.cooperate();
-	}
+   public synchronized boolean cooperate(){
+     return strategy.cooperate();
+   }
     
    public synchronized void updateFitness(boolean myChoice, boolean nbrChoice){
 	  if (myChoice){
@@ -93,19 +93,18 @@ class Prisoner extends Agent{
 		}
 	 }
     
-    public void update() {
-		 Prisoner neighbor = (Prisoner)world.getNeighbor(asker, radius);
+   public void update() {
+	 Prisoner neighbor = (Prisoner)world.getNeighbor(asker, radius);
 		
-		 if (neighbor != null) {
-			 boolean myChoice = cooperate();
-			 lastResponse = neighbor.cooperate();
-			 updateFitness(myChoice, lastResponse);
-			 neighbor.updateFitness(lastResponse, myChoice);
-		 }		
-		 setHeading(Heading.random());
-		 move(10);
-	  }
+	 if (neighbor != null) {
+		 boolean myChoice = cooperate();
+		 lastResponse = neighbor.cooperate();
+		 updateFitness(myChoice, lastResponse);
+		 neighbor.updateFitness(lastResponse, myChoice);
+	}		
+	setHeading(Heading.random());
+        move(10);
+   }
   
-  }
   }
 }
