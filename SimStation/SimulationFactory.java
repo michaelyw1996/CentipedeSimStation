@@ -31,6 +31,7 @@ public class SimulationFactory implements AppFactory {
 			return new StopCommand(model);
 		if (type == "Stats")
 			return new StatsCommand(model);
+		return null;
 	}
 
 	@Override
