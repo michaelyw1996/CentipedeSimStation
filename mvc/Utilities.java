@@ -125,4 +125,12 @@ public class Utilities {
 
     public static Random rng = new Random(System.currentTimeMillis());
 
+    public static void log(String msg){
+      System.out.println(msg);
+    }
+    private static int nextID = 100;
+    public static int getID(){
+      return nextID++;
+    }
+
 }
