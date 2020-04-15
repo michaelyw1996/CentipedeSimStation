@@ -1,5 +1,7 @@
-package mvc;
-
+/*
+ * Edit History:
+ * Michael Wong, 4/14: Updated to contain logs and getID.
+ */
 import java.awt.event.*;
 import java.io.*;
 import java.util.Random;
