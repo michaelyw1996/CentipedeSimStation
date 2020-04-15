@@ -114,8 +114,10 @@ public class Simulation extends Model{
 		while (!found)
 		{
 			Agent candidate = agents.get(i);
+			double myDistance = Math.pow((candidate.getXc() - asker.getXc()),2) + Math.pow((asker.getYc() - candidate.getYc()),2);
+			double tester = Math.sqrt(myDistance);
 
-			if (candidate != asker && asker.distance(candidate) < radius)
+			if (candidate != asker && tester< radius)
 			{
 				neighbor = agents.get(i);
 				found = true;
