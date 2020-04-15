@@ -15,9 +15,6 @@ import java.util.TimerTask;
 
 import mvc.*;
 
-
-import mvc.*;
-
 public class Simulation extends Model{
 	public static int SIZE = 250;
 	protected List<Agent> agents;
@@ -116,6 +113,7 @@ public class Simulation extends Model{
 			Agent candidate = agents.get(i);
 			double myDistance = Math.pow((candidate.getXc() - asker.getXc()),2) + Math.pow((asker.getYc() - candidate.getYc()),2);
 			double tester = Math.sqrt(myDistance);
+
 
 			if (candidate != asker && tester< radius)
 			{
