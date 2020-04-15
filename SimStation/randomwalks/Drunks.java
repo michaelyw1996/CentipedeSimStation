@@ -12,12 +12,12 @@ public class Drunk extends Agent{
 	private int speed;
 	public Drunk() {
 		super();
-		speed = Utilities.rng.nextInt(5)+1;
 	}
 
 	@Override
 	public void update() {
 		setHeading(heading.getRandomHeading());
+		speed = Utilities.rng.nextInt(5)+1;
 		move(speed);
 	}
 
