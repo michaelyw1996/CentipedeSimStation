@@ -4,9 +4,21 @@ import mvc.*;
 
 public class Host extends Agent{
     boolean infected;
-    void infect(){
-      int luck = Utilities.rng(Plague.VIRULENCE);
-      if(Plague.RESISTANCE < luck) {infected = true;}
+    private int speed;
+
+	public Host() {
+		super();
+		infected = false;
+		speed = 5;
+	}
+	    void infect(){
+      int luck = Utilities.rng.nextInt(PlagueSimulation.VIRULENCE);
+      if(PlagueSimulation.RESISTANCE < luck) {infected = true;}
+    }
+
+    boolean getInfected(){
+		return infected;
+
     }
 
     public void update(){
@@ -18,4 +30,5 @@ public class Host extends Agent{
       }
       move(speed);
     }
+
 }
