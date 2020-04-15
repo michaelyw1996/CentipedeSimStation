@@ -44,7 +44,7 @@ public class Simulation extends Model{
 	private class ClockUpdater extends TimerTask {
 		public void run() {
 			clock++;
-			//changed();
+			changed();
 		}
 	}
 	public void start()
