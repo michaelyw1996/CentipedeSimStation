@@ -7,10 +7,11 @@
 
 
 package SimStation;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import mvc.*;
 
@@ -73,8 +74,8 @@ public class Simulation extends Model{
 	{
 		timer = new Timer();
 		timer.schedule(new ClockUpdater(), 1000);
-		for(int i = 0; i < agents.length; i++) {
-			agents[i].resume();
+		for(Agent a: agents) {
+			a.resume();
 		}
 	}
 
