@@ -3178,7 +3178,7 @@
 											"top": 351,
 											"width": 348.61328125,
 											"height": 13,
-											"text": "SimStationFactory"
+											"text": "SimulationFactory"
 										},
 										{
 											"_type": "LabelView",
@@ -6190,7 +6190,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SimStationView",
+					"name": "SimulationView",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -6735,7 +6735,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SimStationFactory",
+					"name": "SimulationFactory",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
