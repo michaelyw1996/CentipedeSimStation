@@ -4,6 +4,7 @@
  * Edited the agent class to implement Serializable.
  * Vyvy Tran 4/5: Added a few functions
  * Vyvy Tran 4/13: Added start() function
+ * Michael Wong 4/13: Completed the random heading function in enum.
  */
 
 package SimStation;
