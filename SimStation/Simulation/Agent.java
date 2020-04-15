@@ -13,14 +13,6 @@ import java.io.Serializable;
 import mvc.*;
 import java.util.*;
 
-enum Heading{
-	NORTH,SOUTH,EAST,WEST;
-	 public static Heading getRandomHeading() {
-         Random random = new Random();
-         return values()[random.nextInt(values().length)];
-     }
-}
-
 enum AgentState{
 	READY, RUNNING, SUSPENDED, STOPPED;
 }
