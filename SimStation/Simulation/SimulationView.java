@@ -16,8 +16,14 @@ public class SimulationView extends View{
 		super(model);
 	}
 	
-    public void paintComponent(Graphics gc) {
-        Simulation simulation = (Simulation)model;    	        
-        gc.fillOval(15, 15, 15, 15);
-    }
+   	public void paintComponent(Graphics gc)
+    	{
+	   	Simulation simulation = (Simulation)model;    	        
+	     
+	    	for (Agent a: ((Simulation)model).getAgents())
+	    	{
+	     	   gc.setColor(Color.RED);
+	     	   gc.fillOval(a.getXc(), a.getYc(), 5, 5);
+	    	}
+   	 }
 }
