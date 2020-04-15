@@ -1,5 +1,4 @@
 package boids;
-
 import mvc.*;
 import SimStation.*;
 
@@ -14,6 +13,7 @@ public class Boid extends Agent {
     public void update(){
       Boid neighbor = (Boid)world.getNeighbor(this, 20.0);
       if(neighbor != null){
+        //interact with neighbor
         heading = neighbor.getHeading();
         speed = neighbor.getSpeed();
       }
