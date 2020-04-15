@@ -9,6 +9,11 @@
 package SimStation;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.LinkedList;
+import java.util.List;
+
+import mvc.*;
+
 
 import mvc.*;
 
@@ -29,7 +34,7 @@ public class Simulation extends Model{
 		agents.add(a);
 		a.setWorld(this);
 	}
-	
+
 	public List<Agent> getAgents()
 	{
 		return agents;
@@ -126,7 +131,7 @@ public class Simulation extends Model{
 		return neighbor;
 	}
 	public void populate() {}
-	
+
 	public String[] getStats() {
 		String[] stats = new String[2];
 		stats[0] = "#agents = " + agents.size();
