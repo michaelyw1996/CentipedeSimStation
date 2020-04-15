@@ -1,4 +1,4 @@
-package boids;
+package boid;
 import mvc.*;
 import SimStation.*;
 

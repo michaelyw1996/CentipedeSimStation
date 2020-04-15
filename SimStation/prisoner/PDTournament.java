@@ -2,7 +2,7 @@
 * Wencong Liu, 4/14:
 * Vyvy Tran, 4/14: Added a few missing functions
 */
-package prisoners;
+package prisoner;
 import mvc.*;
 import Simulation.*;
 
