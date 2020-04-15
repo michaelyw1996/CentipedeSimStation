@@ -121,4 +121,11 @@ public class Simulation extends Model{
 		return neighbor;
 	}
 	public void populate() {}
+	
+	public String[] getStats() {
+		String[] stats = new String[2];
+		stats[0] = "#agents = " + agents.size();
+		stats[1] = "clock = " + clock;
+		return stats;
+	}
 }
