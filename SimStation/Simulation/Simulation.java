@@ -41,7 +41,7 @@ public class Simulation extends Model{
 	private class ClockUpdater extends TimerTask {
 		public void run() {
 			clock++;
-			//changed();
+			changed();
 		}
 	}
 	public void start()
@@ -50,7 +50,7 @@ public class Simulation extends Model{
 		clock = 0;
 		populate();
 		timer = new Timer();
-		timer.schedule(new ClockUpdater(), 1000);
+		timer.schedule(new ClockUpdater(), 1000, 1000);
 		for (Agent a: agents)
 		{
 			a.start();
@@ -70,7 +70,7 @@ public class Simulation extends Model{
 	public synchronized void resume()
 	{
 		timer = new Timer();
-		timer.schedule(new ClockUpdater(), 1000);
+		timer.schedule(new ClockUpdater(), 1000, 1000);
 		for(Agent a: agents) {
 			a.resume();
 		}
