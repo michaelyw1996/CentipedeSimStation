@@ -93,7 +93,7 @@ public class Simulation extends Model{
 		clock++;
 		changed();
 	}
-	public synchronized Agent getNeighbor(Agent asker)
+	public synchronized Agent getNeighbor(Agent asker, double radius)
 	{
 		Agent neighbor = null;
 		boolean found = false;
@@ -104,7 +104,7 @@ public class Simulation extends Model{
 		{
 			Agent candidate = agents.get(i);
 
-			if (candidate != asker && asker.distance())
+			if (candidate != asker && asker.distance(candidate) < radius)
 			{
 				neighbor = agents.get(i);
 				found = true;
