@@ -54,10 +54,7 @@ abstract class Agent implements Runnable,Serializable {
 	public synchronized boolean isStopped() { return state == AgentState.STOPPED; }
 	public synchronized void suspend() { state = AgentState.SUSPENDED; }
 	public synchronized boolean isSuspended() { return state == AgentState.SUSPENDED;  }
-	public synchronized boolean finished()
-	{
-		return (state == AgentState.STOPPED || myThread != null); //missing one more statement
-	}
+	public synchronized boolean finished() { return state == AgentState.STOPPED; }
 	public synchronized void resume() {
 		state = AgentState.READY;
 		notify();
