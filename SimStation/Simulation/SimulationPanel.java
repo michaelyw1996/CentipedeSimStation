@@ -4,7 +4,7 @@
  */
 
 
-package SimStation;
+package Simulation;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

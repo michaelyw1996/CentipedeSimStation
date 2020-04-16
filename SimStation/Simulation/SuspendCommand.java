@@ -3,7 +3,7 @@
 * Vyvy Tran, 4/13: Initialized suspend command
 */
 
-package SimStation;
+package Simulation;
 import mvc.*;
 
 public class SuspendCommand extends Command

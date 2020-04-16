@@ -1,4 +1,7 @@
-package SimStation;
+/*
+ *Michael Wong, 4/14: created and completed.
+ */
+package Simulation;
 
 import java.util.Random;
 

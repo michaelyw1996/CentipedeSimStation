@@ -3,7 +3,7 @@
  * Michael Wong,3/30: Initialized.
  */
 
-package SimStation;
+package Simulation;
 
 import java.awt.Graphics;
 import java.util.Iterator;

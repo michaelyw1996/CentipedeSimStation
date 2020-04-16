@@ -7,7 +7,7 @@
  * Michael Wong 4/13: Completed the random heading function in enum.
  */
 
-package SimStation;
+package Simulation;
 
 import java.io.Serializable;
 import mvc.*;

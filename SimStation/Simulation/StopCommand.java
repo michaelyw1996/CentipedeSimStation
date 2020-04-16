@@ -3,7 +3,7 @@
 * Vyvy Tran, 4/13: Initialized stop command
 */
 
-package simStation;
+package Simulation;
 import mvc.*;
 
 public class StopCommand extends Command
@@ -12,7 +12,7 @@ public class StopCommand extends Command
 	{
 		super(model);
 	}
-	
+
 	public void execute()
 	{
 		Simulation sim = (Simulation) model;

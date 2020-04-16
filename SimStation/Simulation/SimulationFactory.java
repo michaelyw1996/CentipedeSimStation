@@ -3,25 +3,25 @@
  * Michael Wong,3/30: Initialized and completed.
  */
 
-package simStation;
+package Simulation;
 import mvc.*;
 
-public class SimulationFactory implements AppFactory 
+public class SimulationFactory implements AppFactory
 {
 	@Override
-	public Model makeModel() 
+	public Model makeModel()
 	{
 		return new Simulation();
 	}
 
 	@Override
-	public String[] getEditCommands() 
+	public String[] getEditCommands()
 	{
 		return new String[] {"Start", "Suspend", "Resume", "Stop", "Stats"};
 	}
 
 	@Override
-	public Command makeEditCommand(Model model, String type) 
+	public Command makeEditCommand(Model model, String type)
 	{
 		if (type == "Start")
 			return new StartCommand(model);
@@ -33,26 +33,26 @@ public class SimulationFactory implements AppFactory
 			return new StopCommand(model);
 		if (type == "Stats")
 			return new StatsCommand(model);
-		
+
 		return null;
 	}
 
 	@Override
-	public String getTitle() 
+	public String getTitle()
 	{
 		return "SimStation";
 
 	}
 
 	@Override
-	public String[] getHelp() 
+	public String[] getHelp()
 	{
         return new String[] {"Click buttons to do something."};
 
 	}
 
 	@Override
-	public String about() 
+	public String about()
 	{
         return "SimStation Factory version 1.0 by Team Centipede";
 

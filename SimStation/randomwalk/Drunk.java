@@ -2,7 +2,7 @@
 * Michael Wong, 4/14: Created and probably finished drunks.
 */
 package randomwalk;
-import SimStation.*;
+import Simulation.*;
 import mvc.*;
 
 public class Drunk extends Agent{

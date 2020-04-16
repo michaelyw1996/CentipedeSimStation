@@ -4,7 +4,7 @@
 
 package plague;
 
-import SimStation.*;
+import Simulation.*;
 
 public class PlagueSimulation extends Simulation{
 	public static int VIRULENCE = 2;
@@ -17,30 +17,30 @@ public class PlagueSimulation extends Simulation{
 			   this.addAgent(new Host(false));
 			}
 	  }
-	
+
 	public static void main(String[] args) {
 		AppPanel panel = new SimulationPanel(new PlagueFactory());
 		panel.display();
 	}
-	
+
 	@Override
-	public String[] getStats() {		
+	public String[] getStats() {
 		int infectedScore = 0;
 		int numInfected = this.getAgents().size();
 		double infectedAverage = 0.0;
-		
+
 		for (int i = 0; i < this.getAgents().size(); i++) {
 			if (((Host)getAgents().get(i)).getInfected()) {
 				infectedScore++;
 			}
 		}
-		
+
 		infectedAverage = (infectedScore/numInfected) * 100;
-		
+
 		String[] stats = new String[3];
 		stats[0] = "#agents = " + agents.size();
 		stats[1] = "clock = " + clock;
 		stats[2] = "% infected = " + infectedAverage;
-		return stats;	
-	}	
+		return stats;
+	}
 }

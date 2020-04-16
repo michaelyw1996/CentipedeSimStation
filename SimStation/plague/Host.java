@@ -1,7 +1,7 @@
 package plague;
 
 import mvc.*;
-import SimStation.*;
+import Simulation.*;
 
 
 
