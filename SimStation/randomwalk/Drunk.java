@@ -1,10 +1,7 @@
 /*
 * Michael Wong, 4/14: Created and probably finished drunks.
 */
-package randomwalks;
-
-import java.util.Random;
-
+package randomwalk;
 import SimStation.*;
 import mvc.*;
 
@@ -16,7 +13,7 @@ public class Drunk extends Agent{
 
 	@Override
 	public void update() {
-		setHeading(heading.getRandomHeading());
+		setHeading(Heading.getRandomHeading());
 		speed = Utilities.rng.nextInt(5)+1;
 		move(speed);
 	}

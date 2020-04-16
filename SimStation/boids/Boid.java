@@ -1,6 +1,6 @@
 package boid;
 import mvc.*;
-import Simulation.*;
+import SimStation.*;
 
 public class Boid extends Agent {
     private int speed;
