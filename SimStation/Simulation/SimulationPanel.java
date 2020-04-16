@@ -52,9 +52,7 @@ public class SimulationPanel extends AppPanel {
 		buttons.add(p);
 
 		this.add(buttons);
-		SimulationView view = new SimulationView((Simulation)model);
-		this.add(view);
-		//addView(view);
+		this.add(factory.getView(model));
 	}
 
 	public static void main(String[] args) {
