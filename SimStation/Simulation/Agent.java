@@ -17,7 +17,7 @@ enum AgentState{
 	READY, RUNNING, SUSPENDED, STOPPED;
 }
 
-abstract class Agent implements Runnable,Serializable {
+public abstract class Agent implements Runnable,Serializable {
 
 	protected Simulation world;
 	protected String name;

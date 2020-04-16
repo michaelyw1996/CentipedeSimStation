@@ -55,11 +55,6 @@ public class SimulationPanel extends AppPanel {
 		SimulationView view = new SimulationView((Simulation)model);
 		this.add(view);
 		//addView(view);
-
-		public void propertyChange(PropertyChangeEvent evt){
-			Simulation sim = (Simulation)model;
-			clock.setText("" + sim.getClock());
-		}
 	}
 
 	public static void main(String[] args) {
