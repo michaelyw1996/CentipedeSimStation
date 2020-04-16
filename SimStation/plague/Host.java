@@ -1,34 +1,37 @@
 package plague;
 
 import mvc.*;
+import SimStation.*;
+
+
 
 public class Host extends Agent{
-    boolean infected;
-    private int speed;
+	boolean infected;
+	private int speed;
 
-	public Host() {
+
+	public Host(boolean infectedOrNot) {
 		super();
-		infected = false;
+		infected = infectedOrNot;
 		speed = 5;
 	}
-	    void infect(){
-      int luck = Utilities.rng.nextInt(PlagueSimulation.VIRULENCE);
-      if(PlagueSimulation.RESISTANCE < luck) {infected = true;}
-    }
+	void infect(){
+		int luck = Utilities.rng.nextInt(PlagueSimulation.VIRULENCE);
+		if(PlagueSimulation.RESISTANCE < luck) {infected = true;}
+	}
 
-    boolean getInfected(){
+	boolean getInfected(){
 		return infected;
+	}
 
-    }
-
-    public void update(){
-      if(infected){
-        Host neighbor = (Host)world.getNeighbor(this, 20.0);
-        if (neighbor != null && !neighbor.getInfected()){
-          neighbor.infect();
-        }
-      }
-      move(speed);
-    }
+	public void update(){
+		if(infected){
+			Host neighbor = (Host)world.getNeighbor(this, 20.0);
+			if (neighbor != null && !neighbor.getInfected()){
+				neighbor.infect();
+			}
+		}
+		move(speed);
+	}
 
 }
