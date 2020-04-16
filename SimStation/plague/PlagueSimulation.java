@@ -1,3 +1,7 @@
+/*
+* Michael Wong, 4/15: Created the file and completed the populate function.
+*/
+
 package plague;
 
 import SimStation.*;
