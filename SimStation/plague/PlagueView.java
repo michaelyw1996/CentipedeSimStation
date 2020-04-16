@@ -1,6 +1,6 @@
 package plague;
 import java.awt.*;
-import mvc.Model;
+import mvc.*;
 import Simulation.*;
 
 public class PlagueView extends SimulationView

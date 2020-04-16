@@ -5,6 +5,7 @@
 package plague;
 
 import Simulation.*;
+import mvc.*;
 
 public class PlagueSimulation extends Simulation{
 	public static int VIRULENCE = 2;
