@@ -1,27 +1,34 @@
 package plague;
 import java.awt.*;
-import Simulation.*;
-import mvc.*;
+import mvc.Model;
+import SimStation.*;
 
-public class PlagueView extends SimulationView{
-
-	public PlagueView(Model model) {
-		super(model);
+public class PlagueView extends SimulationView
+{
+	public PlagueView(Model model) 
+	{
+		super(model);	
 	}
-
-	public void paintComponent(Graphics gc) {
-		PlagueSimulation sim = (PlagueSimulation)model;
-		for(Agent a:((PlagueSimulation)model).getAgents())
+	
+	public void paintComponent(Graphics gc)
+	{
+		Color oldColor = gc.getColor();
+		PlagueSimulation plague = (PlagueSimulation) model;
+		
+		for (Agent a: ((PlagueSimulation)model).getAgents())
 		{
-			if(a.infected) {
+			Host h = (Host) a;
+			
+			if (h.getInfected())
+			{
 				gc.setColor(Color.RED);
-				gc.fillOval(a.getXc(), a.getYc(), 5, 5);
 			}
-			else{
+			else
+			{
 				gc.setColor(Color.GREEN);
-				gc.fillOval(a.getXc(), a.getYc(), 5, 5);
 			}
-		}
+			
+			gc.fillOval(a.getXc(), a.getYc(), 5, 5);
+		}	
 	}
-
 }
