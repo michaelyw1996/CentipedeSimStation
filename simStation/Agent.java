@@ -1,5 +1,15 @@
+/*
+ * Edit History:
+ * Michael Wong,3/30: Initialized with base classes and variables. Changes to make this generic need to be made.
+ * Edited the agent class to implement Serializable.
+ * Vyvy Tran 4/5: Added a few functions
+ * Vyvy Tran 4/13: Added start() function
+ * Michael Wong 4/13: Completed the random heading function in enum.
+ * Vyvy Tran 4/15: Finalized.
+ */
+
 package simStation;
-import java.io.*;    
+import java.io.*;
 import java.util.Random;
 import mvc.*;
 
@@ -9,10 +19,10 @@ public abstract class Agent implements Serializable, Runnable
 	private Thread myThread;
 	protected String name;
 	protected Simulation world; //master
-	private AgentState state; 
+	private AgentState state;
 	protected Heading heading;
 	protected int xc, yc;
-	
+
 	public Agent(String name)
 	{
 		this.name = name;
@@ -22,12 +32,12 @@ public abstract class Agent implements Serializable, Runnable
 		yc = Utilities.rng.nextInt(Simulation.SIZE);
 		heading = Heading.random();
 	}
-	
+
 	public Agent()
 	{
 		this("Agent_" + mvc.Utilities.getID());
 	}
-	
+
 	public void run()
 	{
 		//myThread = Thread.currentThread();
@@ -48,11 +58,11 @@ public abstract class Agent implements Serializable, Runnable
 		} catch (InterruptedException e) {
 			onInterrupted();
 		}
-		
+
 		onExit();
 	}
-	
-	public synchronized void start() 
+
+	public synchronized void start()
 	{
 		onStart();
 		state = AgentState.READY;
@@ -63,39 +73,39 @@ public abstract class Agent implements Serializable, Runnable
 		myThread.start();
 		update();
 	}
-	
+
 	public abstract void update();
-	
+
 	protected synchronized void onStart() {}
 	protected synchronized void onExit() {}
 	protected synchronized void onInterrupted() {}
-	
-	public synchronized void suspend() 
+
+	public synchronized void suspend()
 	{
 		state = AgentState.SUSPENDED;
 	}
-	
+
 	public synchronized void resume()
 	{
 		state = AgentState.READY;
 		notify();
 	}
-	
+
 	public synchronized void stop()
 	{
 		state = AgentState.STOPPED;
 	}
-	
+
 	public synchronized boolean finished()
 	{
 		return state == AgentState.STOPPED;
 	}
-		
+
 	public synchronized boolean isSuspended()
 	{
 		return state == AgentState.SUSPENDED;
 	}
-	
+
 	public void join() throws InterruptedException
 	{
 		if (myThread != null)
@@ -103,42 +113,42 @@ public abstract class Agent implements Serializable, Runnable
 			myThread.join();
 		}
 	}
-	
+
 	public synchronized String getName()
 	{
 		return name;
 	}
-	
+
 	public Simulation getWorld()
 	{
 		return world;
 	}
-	
+
 	public void setWorld(Simulation world)
 	{
 		this.world = world;
 	}
-	
+
 	public Heading getHeading()
 	{
 		return heading;
 	}
-	
+
 	public void setHeading(Heading heading)
 	{
 		this.heading = heading;
 	}
-	
+
 	public int getXc()
 	{
 		return xc;
 	}
-	
+
 	public int getYc()
 	{
 		return yc;
 	}
-	
+
 	public void move(int steps)
 	{
 		switch(heading) {
@@ -165,7 +175,7 @@ public abstract class Agent implements Serializable, Runnable
 		world.changed();
 	}
 
-	public double distance(Agent candidate) 
+	public double distance(Agent candidate)
 	{
 		return candidate.distance(candidate);
 	}

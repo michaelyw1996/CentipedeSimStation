@@ -1,3 +1,8 @@
+/*
+ * Edit History:
+ * Michael Wong,3/30: Initialized.
+ */
+
 package simStation;
 import java.awt.*;
 import java.util.Iterator;
@@ -7,25 +12,25 @@ import mvc.*;
 public class SimulationView extends View
 {
 
-	public SimulationView(Model model) 
+	public SimulationView(Model model)
 	{
-		super(model);	
+		super(model);
 	}
-	 
-	public void paintComponent(Graphics gc) 
-	{ 
+
+	public void paintComponent(Graphics gc)
+	{
 		 Color oldColor = gc.getColor();
 		 gc.setColor(Color.RED);
-	     Simulation simulation = (Simulation)model;    	        
+	     Simulation simulation = (Simulation)model;
 	     Iterator<Agent> it = simulation.iterator();
-	    
-	     while(it.hasNext()) 
+
+	     while(it.hasNext())
 	     {
 	    	 Agent a = it.next();
 	    	 gc.fillOval(a.getXc(), a.getYc(), 5, 5);
 	     }
-	    
+
 	     gc.setColor(oldColor);
-	 }    
-  
+	 }
+
 }

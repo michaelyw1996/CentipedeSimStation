@@ -1,5 +1,10 @@
+/* 4/14 Michael Made populate function.
+* 4/15 Vyvy added factory and main.
+* 4/15 Steven added get stats.
+*/
+
 package sims;
-import mvc.*; 
+import mvc.*;
 import simStation.*;
 
 class PlagueFactory extends SimulationFactory
@@ -8,16 +13,16 @@ class PlagueFactory extends SimulationFactory
 	{
 		return new PlagueSimulation();
 	}
-	
+
 	public View getView(Model model)
 	{
 		return new PlagueView((PlagueSimulation) model);
 	}
 
-} 
- 
+}
 
-public class PlagueSimulation extends Simulation 
+
+public class PlagueSimulation extends Simulation
 {
 	public static int VIRULENCE = 50;
 	public static int RESISTANCE = 2;
@@ -28,7 +33,7 @@ public class PlagueSimulation extends Simulation
 		{
 			this.addAgent(new Host(true));
 		}
-		
+
 		for (int i = 0; i < 45; i++)
 		{
 			this.addAgent(new Host(false));
@@ -41,14 +46,14 @@ public class PlagueSimulation extends Simulation
 		AppPanel panel = new SimulationPanel(new PlagueFactory());
 		panel.display();
 	}
-	
+
 	@Override
 	public String[] getStats()
-	{		
+	{
 		int infectedScore = 0;
 		int numInfected = this.getAgents().size();
 		double infectedAverage = 0.0;
-		
+
 		for (int i = 0; i < this.getAgents().size(); i++)
 		{
 			if (((Host)getAgents().get(i)).getInfected())
@@ -56,16 +61,14 @@ public class PlagueSimulation extends Simulation
 				infectedScore++;
 			}
 		}
-		
+
 		infectedAverage = (infectedScore/numInfected) * 100;
-		
+
 		String[] stats = new String[3];
 		stats[0] = "#agents = " + agents.size();
 		stats[1] = "clock = " + clock;
 		stats[2] = "% infected = " + infectedAverage;
 		return stats;
-		
+
 	}
 }
-
-

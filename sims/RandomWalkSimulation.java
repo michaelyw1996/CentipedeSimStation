@@ -1,5 +1,9 @@
+/*
+	* Vyvy/Steven, 4/8: Completeted
+*/
+
 package sims;
-import java.awt.Graphics; 
+import java.awt.Graphics;
 import mvc.*;
 import simStation.*;
 
@@ -20,13 +24,10 @@ public class RandomWalkSimulation extends Simulation
 			addAgent(new Drunk());
 		}
 	}
-	
+
 	public static void main(String[] args)
 	{
 		AppPanel panel = new SimulationPanel(new RandomWalkFactory());
 		panel.display();
 	}
 }
-
-
-

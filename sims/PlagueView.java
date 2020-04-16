@@ -1,3 +1,7 @@
+/* 4/14 Michael Wong Initialized with for loops to draw the hosts.
+* 4/15 Vyvy Tran Fixed some of the syntax.
+*/
+
 package sims;
 import java.awt.*;
 import java.util.List;
@@ -7,17 +11,17 @@ import simStation.*;
 
 public class PlagueView extends SimulationView
 {
-	public PlagueView(Model model) 
+	public PlagueView(Model model)
 	{
-		super(model);	
+		super(model);
 	}
-	
+
 	@Override
 	public void paintComponent(Graphics gc)
 	{
 		Color oldColor = gc.getColor();
 		PlagueSimulation plague = (PlagueSimulation) model;
-		
+
 		for (Agent a: plague.getAgents())
 		{
 			Host h = (Host) a;
@@ -29,12 +33,11 @@ public class PlagueView extends SimulationView
 			{
 				gc.setColor(Color.GREEN);
 			}
-			
+
 			gc.fillOval(a.getXc(), a.getYc(), 5, 5);
 		}
 		gc.setColor(oldColor);
-		
-	  }
-	  
-}
 
+	  }
+
+}

@@ -1,3 +1,7 @@
+/*
+* Michael Wong, 4/14: Created and probably finished drunks.
+*/
+
 package sims;
 import mvc.*;
 import simStation.*;
@@ -5,12 +9,12 @@ import simStation.*;
 public class Drunk extends Agent
 {
 	private int speed;
-	
+
 	public Drunk()
 	{
 		super();
 	}
-	
+
 	public void update()
 	{
 		heading = Heading.random();

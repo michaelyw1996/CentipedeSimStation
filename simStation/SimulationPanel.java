@@ -1,3 +1,8 @@
+/*
+ * Edit History:
+ * Michael Wong,3/30: Initialized and completed.
+ * Vyvy, 4/15: Finalized.
+ */
 package simStation;
 
 import java.awt.*;
@@ -44,13 +49,13 @@ public class SimulationPanel extends AppPanel {
 		b.addActionListener(this);
 		p.add(b);
 		buttons.add(p);
-	
+
 		this.add(buttons);
 		this.add(factory.getView(model));
 
 	}
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		AppPanel panel = new SimulationPanel(new SimulationFactory());
 		panel.display();
