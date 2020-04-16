@@ -57,4 +57,9 @@ public class SimulationFactory implements AppFactory
         return "SimStation Factory version 1.0 by Team Centipede";
 
 	}
+	
+	public View getView(Model model) 
+	{
+		return new SimulationView((Simulation) model);
+	}
 }

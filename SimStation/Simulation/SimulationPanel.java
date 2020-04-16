@@ -13,7 +13,7 @@ import javax.swing.border.*;
 import mvc.*;
 
 public class SimulationPanel extends AppPanel {
-	public SimulationPanel(AppFactory factory) {
+	public SimulationPanel(SimulationFactory factory) {
 		super(factory);
 
 		this.setLayout(new GridLayout(1, 2));
@@ -52,9 +52,7 @@ public class SimulationPanel extends AppPanel {
 		buttons.add(p);
 
 		this.add(buttons);
-		SimulationView view = new SimulationView((Simulation)model);
-		this.add(view);
-		//addView(view);
+		this.add(factory.getView(model));
 	}
 
 	public static void main(String[] args) {
