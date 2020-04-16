@@ -38,10 +38,11 @@ public class PlagueSimulation extends Simulation{
 
 		infectedAverage = (infectedScore/numInfected) * 100;
 
-		String[] stats = new String[3];
-		stats[0] = "#agents = " + agents.size();
-		stats[1] = "clock = " + clock;
-		stats[2] = "% infected = " + infectedAverage;
-		return stats;
+		String[] stats = super.getStats();
+		String[] newStats = new String[2];
+		newStats[0] = stats[0];
+		newStats[1] = stats[1];
+		newStats[2] = "% infected = " + infectedAverage;
+		return newStats;
 	}
 }

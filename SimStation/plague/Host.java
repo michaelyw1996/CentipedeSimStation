@@ -13,7 +13,6 @@ public class Host extends Agent{
 	public Host(boolean infectedOrNot) {
 		super();
 		infected = infectedOrNot;
-		speed = 5;
 	}
 	void infect(){
 		int luck = Utilities.rng.nextInt(PlagueSimulation.VIRULENCE);
@@ -31,7 +30,9 @@ public class Host extends Agent{
 				neighbor.infect();
 			}
 		}
-		move(speed);
+		setHeading(Heading.getRandomHeading());
+	  speed = Utilities.rng.nextInt(5)+1;
+    move(speed);
 	}
 
 }
