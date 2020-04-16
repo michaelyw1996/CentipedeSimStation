@@ -10,7 +10,7 @@ import javax.swing.*;
 public class AppPanel extends JPanel implements PropertyChangeListener, ActionListener  {
 
     protected Model model;
-    protected AppFactory factory;
+    protected static AppFactory factory;
     protected Set<View> views;
     private JFrame frame;
     public static int FRAME_WIDTH = 500;
