@@ -1,6 +1,7 @@
-package randomwalk;
+package sims;
+import java.awt.Graphics; 
 import mvc.*;
-import Simulation.*;
+import simStation.*;
 
 class RandomWalkFactory extends SimulationFactory
 {
@@ -16,13 +17,16 @@ public class RandomWalkSimulation extends Simulation
 	{
 		for (int i = 0; i < 50; i++)
 		{
-			this.addAgent(new Drunk());
+			addAgent(new Drunk());
 		}
 	}
-
+	
 	public static void main(String[] args)
 	{
 		AppPanel panel = new SimulationPanel(new RandomWalkFactory());
 		panel.display();
 	}
 }
+
+
+

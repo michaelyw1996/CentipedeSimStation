@@ -1,9 +1,5 @@
 package mvc;
 
-/*
- * Edit History:
- * Michael Wong, 4/14: Updated to contain logs and getID.
- */
 import java.awt.event.*;
 import java.io.*;
 import java.util.Random;
@@ -128,13 +124,12 @@ public class Utilities {
     }
 
     public static Random rng = new Random(System.currentTimeMillis());
-
-    public static void log(String msg){
-      System.out.println(msg);
-    }
+    
     private static int nextID = 100;
-    public static int getID(){
-      return nextID++;
+    
+    public static int getID()
+    {
+    	return nextID++;
     }
 
 }

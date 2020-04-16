@@ -13,8 +13,7 @@ public class View extends JComponent implements PropertyChangeListener {
         super();
         this.model = model;
         model.addPropertyChangeListener(this);
-		setBorder(LineBorder.createBlackLineBorder());
-
+        setBorder(LineBorder.createBlackLineBorder());
     }
     public Model getModel() {
         return model;

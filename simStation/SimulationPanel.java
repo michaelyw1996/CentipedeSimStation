@@ -1,10 +1,4 @@
-/*
- * Edit History:
- * Michael Wong,3/30: Initialized and completed.
- */
-
-
-package Simulation;
+package simStation;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -50,12 +44,14 @@ public class SimulationPanel extends AppPanel {
 		b.addActionListener(this);
 		p.add(b);
 		buttons.add(p);
-
+	
 		this.add(buttons);
 		this.add(factory.getView(model));
+
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		AppPanel panel = new SimulationPanel(new SimulationFactory());
 		panel.display();
 	}
