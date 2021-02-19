@@ -12,7 +12,7 @@ public class ResumeCommand extends Command
 	{
 		super(model);
 	}
-	
+
 	public void execute()
 	{
 		Simulation sim = (Simulation) model;

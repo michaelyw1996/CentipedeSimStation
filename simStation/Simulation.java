@@ -4,24 +4,22 @@
  * Vyvy Tran, 4/5: Added the missing function bodies (stop, resume, start, etc.)
  * Michael Wong, 4/6: Edited a few of the functions that were missing some parts. (resume)
  */
-
-
-package SimStation;
-import java.util.Timer;
-import java.util.TimerTask;
-
+package simStation;
 import mvc.*;
+import java.util.*;
 
-public class Simulation extends Model{
+public class Simulation extends Model
+{
 	public static int SIZE = 250;
 	protected List<Agent> agents;
 	private Timer timer;
-	private int clock;
+	protected int clock;
 
 	public Simulation()
 	{
 		agents = new LinkedList<Agent>();
 		clock = 0;
+
 	}
 
 	public void addAgent(Agent a)
@@ -30,24 +28,54 @@ public class Simulation extends Model{
 		a.setWorld(this);
 	}
 
-	private class ClockUpdater extends TimerTask {
-		public void run() {
-			clock++;
-			//changed();
-		}
+	public List<Agent> getAgents()
+	{
+		return agents;
 	}
-	public void start()
+
+	public synchronized Agent getNeighbor(Agent asker, double radius)
+	{
+		Agent neighbor = null;
+		boolean found = false;
+		int i = Utilities.rng.nextInt(agents.size());
+		int start = i;
+
+		while (!found)
+		{
+			Agent candidate = agents.get(i);
+
+			if (candidate != asker) //&& asker.distance(candidate) < radius)
+			{
+				neighbor = agents.get(i);
+				found = true;
+			}
+			else
+			{
+				i = (i + 1) % agents.size();
+				if (i == start)
+				{
+					break;
+				}
+			}
+		}
+		return neighbor;
+	}
+
+	public synchronized void start()
 	{
 		agents = new LinkedList<Agent>();
 		clock = 0;
 		populate();
 		timer = new Timer();
-		timer.schedule(new ClockUpdater(), 1000);
+		timer.schedule(new ClockUpdater(), 1000, 1000);
+
 		for (Agent a: agents)
 		{
 			a.start();
 		}
 	}
+
+	public void populate(){	}
 
 	public synchronized void suspend()
 	{
@@ -55,6 +83,7 @@ public class Simulation extends Model{
 		{
 			a.suspend();
 		}
+
 		timer.cancel();
 		timer.purge();
 	}
@@ -62,9 +91,19 @@ public class Simulation extends Model{
 	public synchronized void resume()
 	{
 		timer = new Timer();
-		timer.schedule(new ClockUpdater(), 1000);
-		for(int i = 0; i < agents.length; i++) {
-			agents[i].resume();
+		timer.schedule(new ClockUpdater(), 1000, 1000);
+		for (Agent a: agents)
+		{
+			a.resume();
+		}
+	}
+
+	private class ClockUpdater extends TimerTask
+	{
+		public void run()
+		{
+			clock++;
+			changed();
 		}
 	}
 
@@ -74,6 +113,7 @@ public class Simulation extends Model{
 		{
 			a.stop();
 		}
+
 		timer.cancel();
 		timer.purge();
 	}
@@ -93,32 +133,20 @@ public class Simulation extends Model{
 		clock++;
 		changed();
 	}
-	public synchronized Agent getNeighbor(Agent asker, double radius)
+
+	public String[] getStats()
 	{
-		Agent neighbor = null;
-		boolean found = false;
-		int i = Utilities.rng.nextInt(agents.size());
-		int start = i;
-
-		while (!found)
-		{
-			Agent candidate = agents.get(i);
-
-			if (candidate != asker && asker.distance(candidate) < radius)
-			{
-				neighbor = agents.get(i);
-				found = true;
-			}
-			else
-			{
-				i = (i + 1) % agents.size();
-				if (i == start)
-				{
-					break;
-				}
-			}
-		}
-		return neighbor;
+		String[] stats = new String[2];
+		stats[0] = "#agents = " + agents.size();
+		stats[1] = "clock = " + clock;
+		return stats;
 	}
-	public void populate() {}
+
+	public void update()
+	{
+		for (Agent a: agents)
+		{
+			a.update();
+		}
+	}
 }

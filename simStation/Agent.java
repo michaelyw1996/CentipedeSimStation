@@ -4,43 +4,24 @@
  * Edited the agent class to implement Serializable.
  * Vyvy Tran 4/5: Added a few functions
  * Vyvy Tran 4/13: Added start() function
+ * Michael Wong 4/13: Completed the random heading function in enum.
+ * Vyvy Tran 4/15: Finalized.
  */
 
-package SimStation;
-
-import java.io.Serializable;
+package simStation;
+import java.io.*;
+import java.util.Random;
 import mvc.*;
-import java.util.*;
 
-enum Heading{
-	NORTH,SOUTH,EAST,WEST;
-	 public static Heading getRandomHeading() {
-         Random random = new Random();
-         return values()[random.nextInt(values().length)];
-     }
-}
+public abstract class Agent implements Serializable, Runnable
+{
 
-enum AgentState{
-	READY, RUNNING, SUSPENDED, STOPPED;
-}
-
-abstract class Agent implements Runnable,Serializable {
-
-	protected Simulation world;
+	private Thread myThread;
 	protected String name;
-	protected AgentState state;
-	protected Thread myThread;
+	protected Simulation world; //master
+	private AgentState state;
 	protected Heading heading;
-	protected int xc = 0;
-	protected int yc = 0;
-
-	public Agent(String name,Integer xc, Integer yc) {
-		super();
-		this.name = name;
-		state = AgentState.READY;
-	     this.xc = xc;
-	     this.yc = yc;
-	}
+	protected int xc, yc;
 
 	public Agent(String name)
 	{
@@ -49,7 +30,7 @@ abstract class Agent implements Runnable,Serializable {
 		myThread = null;
 		xc = Utilities.rng.nextInt(Simulation.SIZE);
 		yc = Utilities.rng.nextInt(Simulation.SIZE);
-		heading = Heading.getRandomHeading();
+		heading = Heading.random();
 	}
 
 	public Agent()
@@ -57,27 +38,9 @@ abstract class Agent implements Runnable,Serializable {
 		this("Agent_" + mvc.Utilities.getID());
 	}
 
-	public synchronized void stop() { state = AgentState.STOPPED; }
-	public synchronized boolean isStopped() { return state == AgentState.STOPPED; }
-	public synchronized void suspend() { state = AgentState.SUSPENDED; }
-	public synchronized boolean isSuspended() { return state == AgentState.SUSPENDED;  }
-	public synchronized boolean finished()
-	{
-		return (state == AgentState.STOPPED || myThread != null); //missing one more statement
-	}
-	public synchronized void resume() {
-		state = AgentState.READY;
-		notify();
-	}
-	public String getName() { return name; }
-	public synchronized AgentState getState() { return state; }
-	public synchronized void join() throws InterruptedException {
-		if (myThread != null) myThread.join();
-	}
-	public synchronized String toString() { return name + ".state = " + state; }
-
 	public void run()
 	{
+		//myThread = Thread.currentThread();
 		try {
 			while(!finished())
 			{
@@ -107,14 +70,54 @@ abstract class Agent implements Runnable,Serializable {
 		{
 			myThread = new Thread(this, name);
 		}
-
 		myThread.start();
+		update();
 	}
 
 	public abstract void update();
+
 	protected synchronized void onStart() {}
 	protected synchronized void onExit() {}
 	protected synchronized void onInterrupted() {}
+
+	public synchronized void suspend()
+	{
+		state = AgentState.SUSPENDED;
+	}
+
+	public synchronized void resume()
+	{
+		state = AgentState.READY;
+		notify();
+	}
+
+	public synchronized void stop()
+	{
+		state = AgentState.STOPPED;
+	}
+
+	public synchronized boolean finished()
+	{
+		return state == AgentState.STOPPED;
+	}
+
+	public synchronized boolean isSuspended()
+	{
+		return state == AgentState.SUSPENDED;
+	}
+
+	public void join() throws InterruptedException
+	{
+		if (myThread != null)
+		{
+			myThread.join();
+		}
+	}
+
+	public synchronized String getName()
+	{
+		return name;
+	}
 
 	public Simulation getWorld()
 	{
@@ -170,6 +173,11 @@ abstract class Agent implements Runnable,Serializable {
 			}
 		}
 		world.changed();
+	}
+
+	public double distance(Agent candidate)
+	{
+		return candidate.distance(candidate);
 	}
 
 }

@@ -700,6 +700,7 @@
 											"model": {
 												"$ref": "AAAAAAFxCrNMhRFsb/k="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 469,
 											"top": 448,
@@ -713,7 +714,7 @@
 									"left": 464,
 									"top": 293,
 									"width": 112.27978515625,
-									"height": 173
+									"height": 158
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -3177,7 +3178,7 @@
 											"top": 351,
 											"width": 348.61328125,
 											"height": 13,
-											"text": "SimStationFactory"
+											"text": "SimulationFactory"
 										},
 										{
 											"_type": "LabelView",
@@ -6189,7 +6190,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SimStationView",
+					"name": "SimulationView",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
@@ -6734,7 +6735,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SimStationFactory",
+					"name": "SimulationFactory",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
@@ -21077,9 +21078,9 @@
 											"font": "Arial;13;1",
 											"left": 621,
 											"top": 391,
-											"width": 96.4716796875,
+											"width": 104.79345703125,
 											"height": 13,
-											"text": "PlagueAgentt"
+											"text": "Host"
 										},
 										{
 											"_type": "LabelView",
@@ -21112,7 +21113,7 @@
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 384,
-									"width": 106.4716796875,
+									"width": 114.79345703125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFxLv91ZV/s7rw="
@@ -21149,16 +21150,16 @@
 											"font": "Arial;13;0",
 											"left": 621,
 											"top": 414,
-											"width": 96.4716796875,
+											"width": 104.79345703125,
 											"height": 13,
-											"text": "-isSick: Boolean",
+											"text": "-infected: Boolean",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 409,
-									"width": 106.4716796875,
+									"width": 114.79345703125,
 									"height": 23
 								},
 								{
@@ -21183,16 +21184,16 @@
 											"font": "Arial;13;0",
 											"left": 621,
 											"top": 437,
-											"width": 96.4716796875,
+											"width": 104.79345703125,
 											"height": 13,
-											"text": "+update()",
+											"text": "+infect()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 432,
-									"width": 106.4716796875,
+									"width": 114.79345703125,
 									"height": 23
 								},
 								{
@@ -21232,7 +21233,7 @@
 							"containerChangeable": true,
 							"left": 616,
 							"top": 384,
-							"width": 106.4716796875,
+							"width": 114.79345703125,
 							"height": 71,
 							"nameCompartment": {
 								"$ref": "AAAAAAFxLv91ZV/rUJM="
@@ -21271,8 +21272,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 328,
+									"left": 655,
+									"top": 329,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -21292,8 +21293,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 638,
-									"top": 328,
+									"left": 640,
+									"top": 329,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -21313,8 +21314,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 682,
-									"top": 329,
+									"left": 684,
+									"top": 328,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -21332,7 +21333,7 @@
 								"$ref": "AAAAAAFxLv91ZV/qc3I="
 							},
 							"lineStyle": 1,
-							"points": "668:383;669:288",
+							"points": "671:383;669:288",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFxLwElUmpMPDo="
@@ -21426,7 +21427,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFxCaFyb94VEjo="
 					},
-					"name": "PlagueAgentt",
+					"name": "Host",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -21450,7 +21451,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxLv91Y1/oxrE="
 							},
-							"name": "isSick",
+							"name": "infected",
 							"visibility": "private",
 							"type": "Boolean"
 						}
@@ -21462,7 +21463,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxLv91Y1/oxrE="
 							},
-							"name": "update"
+							"name": "infect"
 						}
 					]
 				}
@@ -26264,7 +26265,7 @@
 											"font": "Arial;13;0",
 											"left": 341.5,
 											"top": 556.5,
-											"width": 103.21533203125,
+											"width": 102,
 											"height": 25,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAFxCbbC6uisfKA="
@@ -28186,7 +28187,7 @@
 											"font": "Arial;13;0",
 											"left": 34.5,
 											"top": 132.5,
-											"width": 89.46630859375,
+											"width": 89,
 											"height": 25,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAFxCbbC6+j//Kk="

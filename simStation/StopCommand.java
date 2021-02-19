@@ -1,6 +1,6 @@
 /**
 * Edit History:
-* Vyvy Tran, 4/13: Initialized stop command
+* Vyvy Tran, 4/13: Initialized command
 */
 
 package simStation;
@@ -12,7 +12,7 @@ public class StopCommand extends Command
 	{
 		super(model);
 	}
-	
+
 	public void execute()
 	{
 		Simulation sim = (Simulation) model;

@@ -1,9 +1,9 @@
 /**
 * Edit History:
-* Vyvy Tran, 4/13: Initialized suspend command
+* Vyvy Tran, 4/13: Initialized command
 */
 
-package SimStation;
+package simStation;
 import mvc.*;
 
 public class SuspendCommand extends Command

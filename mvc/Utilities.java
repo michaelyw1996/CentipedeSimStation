@@ -124,5 +124,12 @@ public class Utilities {
     }
 
     public static Random rng = new Random(System.currentTimeMillis());
+    
+    private static int nextID = 100;
+    
+    public static int getID()
+    {
+    	return nextID++;
+    }
 
 }
